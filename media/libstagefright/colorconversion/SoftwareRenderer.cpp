@@ -28,9 +28,13 @@
 #include <ui/GraphicBufferMapper.h>
 #include <gui/ISurfaceTexture.h>
 
+#ifdef USES_QCOM7x25_HARDWARE
+#include <gralloc/gralloc_priv.h>
+#else
 #ifdef QCOM_LEGACY_OMX
 #include <gralloc_priv.h>
-#endif
+#endif // QCOM_LEGACY_OMX
+#endif // USES_QCOM7x25_HARDWARE
 
 namespace android {
 
@@ -122,8 +126,10 @@ SoftwareRenderer::SoftwareRenderer(
             mNativeWindow.get(),
             GRALLOC_USAGE_SW_READ_NEVER | GRALLOC_USAGE_SW_WRITE_OFTEN
             | GRALLOC_USAGE_HW_TEXTURE | GRALLOC_USAGE_EXTERNAL_DISP
+#ifndef USES_QCOM7x25_HARDWARE   
 #ifdef QCOM_LEGACY_OMX
             | GRALLOC_USAGE_PRIVATE_ADSP_HEAP | GRALLOC_USAGE_PRIVATE_UNCACHED
+#endif
 #endif
             ));
 
