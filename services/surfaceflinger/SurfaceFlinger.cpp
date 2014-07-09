@@ -1557,7 +1557,7 @@ sp<Layer> SurfaceFlinger::createNormalSurface(
     case PIXEL_FORMAT_TRANSPARENT:
     case PIXEL_FORMAT_TRANSLUCENT:
     #ifdef NO_RGBA_8888
-        format = PIXEL_FORMAT_RGB_565;
+        format = PIXEL_FORMAT_RGBA_4444;
     #else
 		format = PIXEL_FORMAT_RGBA_8888;
     #endif
@@ -1577,7 +1577,7 @@ sp<Layer> SurfaceFlinger::createNormalSurface(
 #ifdef NO_RGBX_8888
     if (format == PIXEL_FORMAT_RGBX_8888)
     #ifdef NO_RGBA_8888
-        format = PIXEL_FORMAT_RGB_565;
+        format = PIXEL_FORMAT_RGBA_4444;
     #else
 		format = PIXEL_FORMAT_RGBA_8888;
     #endif
