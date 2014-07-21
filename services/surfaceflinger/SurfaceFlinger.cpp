@@ -139,7 +139,7 @@ void SurfaceFlinger::init()
     property_get("persist.sys.use_dithering", value, "1");
     mUseDithering = atoi(value);
 
-    property_get("persist.sys.prefer_16bpp", value, "1");
+    property_get("persist.sys.prefer_16bpp", value, "0");
     mPrefer16bpp = atoi(value);
 
     if (mDebugDDMS) {
