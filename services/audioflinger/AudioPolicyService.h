@@ -149,7 +149,7 @@ public:
     virtual status_t startTone(audio_policy_tone_t tone, audio_stream_type_t stream);
     virtual status_t stopTone();
     virtual status_t setVoiceVolume(float volume, int delayMs = 0);
-#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
+#if defined(HAVE_FM_RADIO)
     virtual status_t setFmVolume(float volume, int delayMs = 0);
 #endif
 
@@ -176,7 +176,7 @@ private:
             SET_VOLUME,
             SET_PARAMETERS,
             SET_VOICE_VOLUME,
-#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
+#if defined(HAVE_FM_RADIO)
             SET_FM_VOLUME
 #endif
         };
@@ -196,7 +196,7 @@ private:
                     status_t    volumeCommand(int stream, float volume, int output, int delayMs = 0);
                     status_t    parametersCommand(int ioHandle, const char *keyValuePairs, int delayMs = 0);
                     status_t    voiceVolumeCommand(float volume, int delayMs = 0);
-#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
+#if defined(HAVE_FM_RADIO)
                     status_t    fmVolumeCommand(float volume, int delayMs = 0);
 #endif
                     void        insertCommand_l(AudioCommand *command, int delayMs = 0);
@@ -243,7 +243,7 @@ private:
             float mVolume;
         };
 
-#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
+#if defined(HAVE_FM_RADIO)
         class FmVolumeData {
         public:
             float mVolume;
