@@ -1193,7 +1193,7 @@ status_t AudioFlinger::getRenderPosition(uint32_t *halFrames, uint32_t *dspFrame
     return BAD_VALUE;
 }
 
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
 status_t AudioFlinger::setFmVolume(float value)
 {
     status_t ret = initCheck();

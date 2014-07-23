@@ -219,7 +219,7 @@ public:
 
     virtual status_t moveEffects(int sessionId, int srcOutput, int dstOutput);
 
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
     virtual status_t setFmVolume(float volume);
 #endif
 
@@ -240,7 +240,7 @@ public:
         AUDIO_HW_SET_MIC_MUTE,
         AUDIO_SET_VOICE_VOLUME,
         AUDIO_SET_PARAMETER,
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
         AUDIO_SET_FM_VOLUME,
 #endif
     };

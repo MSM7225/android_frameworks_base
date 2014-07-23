@@ -839,7 +839,7 @@ bool AudioPolicyService::AudioCommandThread::threadLoop()
                     }
                     delete data;
                     }break;
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
                 case SET_FM_VOLUME: {
                     FmVolumeData *data = (FmVolumeData *)command->mParam;
                     LOGV("AudioCommandThread() processing set fm volume volume %f", data->mVolume);
@@ -1022,7 +1022,7 @@ status_t AudioPolicyService::AudioCommandThread::voiceVolumeCommand(float volume
     return status;
 }
 
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
 status_t AudioPolicyService::AudioCommandThread::fmVolumeCommand(float volume, int delayMs)
 {
     status_t status = NO_ERROR;
@@ -1114,7 +1114,7 @@ void AudioPolicyService::AudioCommandThread::insertCommand_l(AudioCommand *comma
             removedCommands.add(command2);
         } break;
 
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
         case SET_FM_VOLUME: {
             removedCommands.add(command2);
         } break;
@@ -1185,7 +1185,7 @@ int AudioPolicyService::setStreamVolume(audio_stream_type_t stream,
                                                    (int)output, delayMs);
 }
 
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
 status_t AudioPolicyService::setFmVolume(float volume, int delayMs)
 {
     return mAudioCommandThread->fmVolumeCommand(volume, delayMs);
@@ -1713,7 +1713,7 @@ static int aps_set_voice_volume(void *service, float volume, int delay_ms)
     return audioPolicyService->setVoiceVolume(volume, delay_ms);
 }
 
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
 static int aps_set_fm_volume(void *service, float volume, int delay_ms)
 {
     AudioPolicyService *audioPolicyService = (AudioPolicyService *)service;
@@ -1745,7 +1745,7 @@ namespace {
         stop_tone             : aps_stop_tone,
         set_voice_volume      : aps_set_voice_volume,
         move_effects          : aps_move_effects,
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
         set_fm_volume         : aps_set_fm_volume,
 #endif
     };

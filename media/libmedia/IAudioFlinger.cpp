@@ -94,7 +94,7 @@ enum {
     DELETE_SESSION,
     APPLY_EFFECTS,
 #endif
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
     SET_FM_VOLUME
 #endif
 };
@@ -865,7 +865,7 @@ public:
         return reply.readInt32();
     }
 
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
     virtual status_t setFmVolume(float volume)
     {
         Parcel data, reply;
@@ -1339,7 +1339,7 @@ status_t BnAudioFlinger::onTransact(
             return NO_ERROR;
         } break;
 #endif
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
         case SET_FM_VOLUME: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
             float volume = data.readFloat();

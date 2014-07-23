@@ -335,7 +335,7 @@ status_t AudioSystem::setVoiceVolume(float value)
     return af->setVoiceVolume(value);
 }
 
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
 status_t AudioSystem::setFmVolume(float value)
 {
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();

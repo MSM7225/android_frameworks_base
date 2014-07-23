@@ -96,7 +96,7 @@ public:
         size_t* buffSize);
 
     static status_t setVoiceVolume(float volume);
-#if defined(HAVE_FM_RADIO)
+#if defined(QCOM_HARDWARE) && defined(HAVE_FM_RADIO)
     static status_t setFmVolume(float volume);
 #endif
 
